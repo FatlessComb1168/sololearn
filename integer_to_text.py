@@ -65,6 +65,37 @@ def func1():
             else:
                 text += n4[str(buff[0])] + ' ' + n3[str(buff[1])] + ' ' + n1[str(buff[2])];
 
+def func2():
+    global array;
+    b = len(number1) // 3;
+    c = len(number1) - b*3;
+    array = [];
+    if c == 0:
+        begin = 0;
+        end = 3;
+        while end <= len(number1):
+            array.append(number1[begin:end]);
+            begin += 3;
+            end += 3;
+        
+    elif c == 1:
+        array.append(number1[0]);
+        begin = 1;
+        end = 4;
+        while end <= len(number1):
+            array.append(number1[begin:end]);
+            begin += 3;
+            end += 3;
+        
+    elif c == 2:
+        array.append(number1[0:2]);
+        begin = 2;
+        end = 5;
+        while end <= len(number1):
+            array.append(number1[begin:end]);
+            begin += 3;
+            end += 3;
+
 n1 = {"1": "один", "2": "два", "3": "три", "4": "четыре", "5": "пять", "6": "шесть", "7": "семь", "8": "восемь", "9": "девять"};
 n2 = {"10": "десять", "11": "одиннадцать", "12": "двенадцать", "13": "тринадцать", "14": "четырнадцать", "15": "пятнадцать", "16": "шестнадцать", "17": "семнадцать", "18": "восемнадцать", "19": "девятнадцать"};
 n3 = {"20": "двадцать", "30": "тридцать", "40": "сорок", "50": "пятьдесят", "60": "шестьдесят", "70": "семьдесят", "80": "восемьдесят", "90": "девяносто"};
@@ -100,24 +131,7 @@ while True:
         elif 0 < int(number) < 1000:
             func1();
         else:
-            array = [];
-            if len(number) % 3 == 0:
-                begin = 0;
-                end = 3;
-                while end <= len(number):
-                    array.append(number[begin:end]);
-                    begin += 3;
-                    end += 3;
-            else:
-                prepared = len(number) % 3;
-                array.append(int(number[0:prepared]));
-                begin = prepared;
-                end = begin + 3;
-                while end <= len(number):
-                    array.append(int(number[begin:end]));
-                    begin += 3;
-                    end += 3;
-
+            func2();
             count = len(array) * (-1);
             i = count;
             while count <= i < 0:
@@ -146,32 +160,7 @@ while True:
 
         b = len(number1) // 3;
         c = len(number1) - b*3;
-        array = [];
-        if c == 0:
-            begin = 0;
-            end = 3;
-            while end <= len(number1):
-                array.append(number1[begin:end]);
-                begin += 3;
-                end += 3;
-            
-        elif c == 1:
-            array.append(number1[0]);
-            begin = 1;
-            end = 4;
-            while end <= len(number1):
-                array.append(number1[begin:end]);
-                begin += 3;
-                end += 3;
-            
-        elif c == 2:
-            array.append(number1[0:2]);
-            begin = 2;
-            end = 5;
-            while end <= len(number1):
-                array.append(number1[begin:end]);
-                begin += 3;
-                end += 3;
+        func2();
 
         for i in array:
             standard += str(i) + ' ';
