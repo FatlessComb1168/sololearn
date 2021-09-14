@@ -72,64 +72,112 @@ n4 = {"100": "сто", "200": "двести", "300": "триста", "400": "ч�
 n6 = {-1: "", -2: "тысяч", -3: "миллионов", -4: "миллиардов"};
 
 while True:
-    text = "";
-    number = input();
+    try:
+        text = '';
+        standard = '';
+        number = input('Введите число: ');
 
-    if number == '0':
-        print('ноль');
-        continue;
+        if '-' in number:
+            number = number.replace('-', '');
+            text = 'минус ' + text;
+            standard = '-' + standard;
 
-    elif 0 < int(number) < 1000:
-        func1();
-    else:
+        if '+' in number:
+            number = number.replace('+', '');
+            text = 'плюс ' + text;
+            standard = '+' + standard;
+        
+        if number[0] == '0':
+            while number[0] == '0':
+                number = number.replace('0', '', 1);
+
+        number1 = number;
+
+        if number == '0':
+            print('ноль');
+            continue;
+
+        elif 0 < int(number) < 1000:
+            func1();
+        else:
+            array = [];
+            if len(number) % 3 == 0:
+                begin = 0;
+                end = 3;
+                while end <= len(number):
+                    array.append(number[begin:end]);
+                    begin += 3;
+                    end += 3;
+            else:
+                prepared = len(number) % 3;
+                array.append(int(number[0:prepared]));
+                begin = prepared;
+                end = begin + 3;
+                while end <= len(number):
+                    array.append(int(number[begin:end]));
+                    begin += 3;
+                    end += 3;
+
+            count = len(array) * (-1);
+            i = count;
+            while count <= i < 0:
+                number = str(array[i]);
+                func1();
+                text += ' ' + n6[i] + ' ';
+                i += 1;
+        
+        text = text.replace('один тысяч', 'одна тысяча');
+        text = text.replace('два тысяч', 'две тысячи');
+        text = text.replace('три тысяч', 'три тысячи');
+        text = text.replace('четыре тысяч', 'четыре тысячи');
+
+        text = text.replace('один миллионов', 'один миллион');
+        text = text.replace('два миллионов', 'два миллиона');
+        text = text.replace('три миллионов', 'три миллиона');
+        text = text.replace('четыре миллионов', 'четыре миллиона');
+
+        text = text.replace('один миллиардов', 'один миллиард');
+        text = text.replace('два миллиардов', 'два миллиарда');
+        text = text.replace('три миллиардов', 'три миллиарда');
+        text = text.replace('четыре миллиардов', 'четыре миллиарда');
+
+        text = text.replace('  миллионов', '');
+        text = text.replace('  тысяч', '');
+
+        b = len(number1) // 3;
+        c = len(number1) - b*3;
         array = [];
-        if len(number) % 3 == 0:
+        if c == 0:
             begin = 0;
             end = 3;
-            while end <= len(number):
-                array.append(number[begin:end]);
+            while end <= len(number1):
+                array.append(number1[begin:end]);
                 begin += 3;
                 end += 3;
-        else:
-            prepared = len(number) % 3;
-            array.append(int(number[0:prepared]));
-            begin = prepared;
-            end = begin + 3;
-            while end <= len(number):
-                array.append(int(number[begin:end]));
+            
+        elif c == 1:
+            array.append(number1[0]);
+            begin = 1;
+            end = 4;
+            while end <= len(number1):
+                array.append(number1[begin:end]);
+                begin += 3;
+                end += 3;
+            
+        elif c == 2:
+            array.append(number1[0:2]);
+            begin = 2;
+            end = 5;
+            while end <= len(number1):
+                array.append(number1[begin:end]);
                 begin += 3;
                 end += 3;
 
-        count = len(array) * (-1);
-        i = count;
-        while count <= i < 0:
-            number = str(array[i]);
-            func1();
-            text += ' ' + n6[i] + ' ';
-            i += 1;
-    
-    text = text.replace('один тысяч', 'одна тысяча');
-    text = text.replace('два тысяч', 'две тысячи');
-    text = text.replace('три тысяч', 'три тысячи');
-    text = text.replace('четыре тысяч', 'четыре тысячи');
+        for i in array:
+            standard += str(i) + ' ';
+        standard = standard[0:-1];
 
-    text = text.replace('один миллионов', 'один миллион');
-    text = text.replace('два миллионов', 'два миллиона');
-    text = text.replace('три миллионов', 'три миллиона');
-    text = text.replace('четыре миллионов', 'четыре миллиона');
-
-    text = text.replace('один миллиардов', 'один миллиард');
-    text = text.replace('два миллиардов', 'два миллиарда');
-    text = text.replace('три миллиардов', 'три миллиарда');
-    text = text.replace('четыре миллиардов', 'четыре миллиарда');
-
-    text = text.replace('  миллионов', '');
-    text = text.replace('  тысяч', '');
-
-    standard = ''
-    for i in array:
-        standard += str(i) + ' ';
-    standard = standard[0:-1];
-
-    print('Стандарт:', standard);
-    print('Текстовая версия:', text, '\n');
+        print('Стандарт:', standard);
+        print('Текстовая версия:', text, '\n');
+    except:
+       print();
