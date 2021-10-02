@@ -22,8 +22,8 @@ user = 0;
 
 while True:
     print("Rock-paper-scissors");
-    print("Computer's score: ", computer);
-    print("Your score: ", user);
+    print("Computer's score:", computer);
+    print("Your score:", user);
     cc = randint(1, 3);
     # print('Computer chose', array[cc - 1]);
     print("\nComputer chose one of these items:");
