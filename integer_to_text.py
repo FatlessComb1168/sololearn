@@ -28,17 +28,17 @@ def func():
 def func1():
     global text, buff, b;
     if 0 < int(number) < 10:
-        text += n1[number];
+        text += n1[str(int(number))];
 
     elif 10 <= int(number) < 20:
-        text += n2[number];
+        text += n2[str(int(number))];
 
     elif 20 <= int(number) < 100:
         b = 0;
         buff = [];
 
         if int(number) % 10 == 0:
-            text += n3[number];
+            text += n3[str(int(number))];
 
         else:
             func();
@@ -49,12 +49,13 @@ def func1():
         buff = [];
 
         if int(number) % 100 == 0:
-            text += n4[number];
-
+            text += n4[str(int(number))];
+            
         else:
             func();
             if len(buff) == 2 and buff[1] < 10:
                 text += n4[str(buff[0])] + ' ' + n1[str(buff[1])];
+                
 
             elif len(buff) == 2 and buff[1] > 10:
                 text += n4[str(buff[0])] + ' ' + n3[str(buff[1])];
@@ -64,6 +65,8 @@ def func1():
 
             else:
                 text += n4[str(buff[0])] + ' ' + n3[str(buff[1])] + ' ' + n1[str(buff[2])];
+        
+        
 
 def func2():
     global array;
@@ -117,6 +120,11 @@ while True:
             number = number.replace('+', '');
             text = 'плюс ' + text;
             standard = '+' + standard;
+
+        if int(number) == 0:
+            print('Стандарт: 0')
+            print('Текстовая версия: ноль');
+            continue;
         
         if number[0] == '0':
             while number[0] == '0':
@@ -124,12 +132,9 @@ while True:
 
         number1 = number;
 
-        if number == '0':
-            print('ноль');
-            continue;
-
-        elif 0 < int(number) < 1000:
+        if 0 < int(number) < 1000:
             func1();
+
         else:
             func2();
             count = len(array) * (-1);
@@ -168,5 +173,5 @@ while True:
 
         print('Стандарт:', standard);
         print('Текстовая версия:', text, '\n');
-    except:
-       print();
+    except Exception as e:
+       print('Ошибка: число не должно быть больше 999 999 999 999 или было введено нечисловое значение');
