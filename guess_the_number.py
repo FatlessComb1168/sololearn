@@ -31,4 +31,4 @@ while True:
         else:
             print("Unfortunately, it's the number", str(a) + '!');
     except:
-        print('An error was occured! Try again.');
+        print('An error was occurred! Try again.');
