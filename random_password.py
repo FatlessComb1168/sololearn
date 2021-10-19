@@ -15,6 +15,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from random import randint;
 from os import system;
+try:
+    from pyperclip import copy;
+except:
+    pass;
 
 while True:
     try:
@@ -24,7 +28,12 @@ while True:
 
         for i in range(length):
             result += chr(randint(33, 122));
-        print('Password (copied!): ' + result);
+        try:
+            copy(result);
+            print('Password (copied!): ' + result);
+        except:
+            print('Password: ' + result);
+            
         input();
     except:
         a = input('Exit? (y/n): ');
