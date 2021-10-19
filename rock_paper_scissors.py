@@ -18,32 +18,42 @@ from os import system;
 
 computer = 0;
 user = 0;
+print();
 # array = ['Rock', 'Paper', 'Scissors'];
 
 while True:
-    print("Rock-paper-scissors");
-    print("Computer's score:", computer);
-    print("Your score:", user);
-    cc = randint(1, 3);
-    # print('Computer chose', array[cc - 1]);
-    print("\nComputer chose one of these items:");
-    print("1) Rock\n2) Paper\n3) Scissors\n");
-    uc = int(input('Your choice (only numbers): '));
-    system('cls');
-    if uc == cc: print("It's a draw");
-    
-    elif cc > uc:
-        if cc == 3 and uc == 1:
-            print('You won');
-            user += 1;
+    try:
+        print("Rock-paper-scissors");
+        print("Computer's score:", computer);
+        print("Your score:", user);
+        cc = randint(1, 3);
+        # print('Computer chose', array[cc - 1]);
+        print("\nComputer chose one of these items:");
+        print("1) Rock\n2) Paper\n3) Scissors\n");
+        uc = input('Your choice (only numbers): ');
+        uc = int(uc);
+
+        system('cls');
+        if uc >= 1 and uc <= 3:
+            if uc == cc: print("It's a draw");
+            
+            elif cc > uc:
+                if cc == 3 and uc == 1:
+                    print('You won');
+                    user += 1;
+                else:
+                    print('Computer won');
+                    computer += 1;
+            
+            else:
+                if cc == 1 and uc == 3:
+                    print('Computer won');
+                    computer += 1;
+                else:
+                    print('You won');
+                    user += 1;
         else:
-            print('Computer won');
-            computer += 1;
-    
-    else:
-        if cc == 1 and uc == 3:
-            print('Computer won');
-            computer += 1;
-        else:
-            print('You won');
-            user += 1;
+            print('You typed ' + str(uc) + '!');
+    except:
+        system('cls');
+        print('You typed ' + uc + '!');
