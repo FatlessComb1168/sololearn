@@ -16,14 +16,19 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from random import randint;
 from os import system;
 
+print();
+
 while True:
-    a = randint(1, 10);
-    print('The computer riddled a number from 1 to 10.');
-    b = int(input('Guess it: '));
-    system('cls');
+    try:
+        a = randint(1, 10);
+        print('The computer riddled a number from 1 to 10.');
+        b = int(input('Guess it: '));
+        system('cls');
 
-    if a == b:
-        print("Well done! It's the number", str(b) + '!');
+        if a == b:
+            print("Well done! It's the number", str(b) + '!');
 
-    else:
-        print("Unfortunately, it's the number", str(a) + '!');
+        else:
+            print("Unfortunately, it's the number", str(a) + '!');
+    except:
+        print('An error was occured! Try again.');
