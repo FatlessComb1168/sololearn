@@ -46,7 +46,8 @@ def encrypt(number):
             caesar_encrypt += array[array.index(text[i]) + number - len(array)];
     return caesar_encrypt;
 
-while True:
+_exit = True;
+while _exit:
     proof = 0;
     number = input('Input any integer positive or negative number: ');
 
@@ -55,9 +56,8 @@ while True:
     except:
         ask_for_exit = input('Exit? (y/n): ');
         if ask_for_exit == 'y':
-            break;
-        else:
-            proof = 1;
+            _exit = False;
+        proof = 1;
 
     if proof == 0:
         text = input('Input any text using latin and cyrrilic alphabets, digits and special symbols: ');

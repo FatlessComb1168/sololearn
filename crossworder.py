@@ -15,7 +15,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from os import system;
 
-while True:
+b = True;
+while b:
     a = input('1st word: ');
     b = input('2nd word: ');
 
@@ -59,9 +60,10 @@ while True:
                     print(b);
                     proof = 1;
         
-        
     else:
         print('Type words with common letters');
 
-    input('\nClick Enter to continue...');
+    work = input('\nContinue?\nAny typing - Yes\n1 - Exit\n');
+    if work == '1':
+        b = False;
     system('cls');

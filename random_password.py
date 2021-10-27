@@ -20,7 +20,8 @@ try:
 except:
     pass;
 
-while True:
+b = True;
+while b:
     try:
         system('cls');
         length = int(input('Enter length of password: '));
@@ -38,6 +39,6 @@ while True:
     except:
         a = input('Exit? (y/n): ');
         if a == 'y':
-            break;
+            b = False;
         else:
             continue;

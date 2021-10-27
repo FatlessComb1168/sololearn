@@ -21,7 +21,8 @@ user = 0;
 print();
 # array = ['Rock', 'Paper', 'Scissors'];
 
-while True:
+b = True;
+while b:
     try:
         print("Rock-paper-scissors");
         print("Computer's score:", computer);
@@ -54,6 +55,11 @@ while True:
                     user += 1;
         else:
             print('You typed ' + str(uc) + '!');
+            
     except:
-        system('cls');
         print('You typed ' + uc + '!');
+        a = input('Exit? (y/n) ');
+        if a == 'y':
+            b = False;
+        system('cls');
+        print();

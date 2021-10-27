@@ -18,7 +18,8 @@ from os import system;
 
 print();
 
-while True:
+b = True;
+while b:
     try:
         a = randint(1, 10);
         print('The computer riddled a number from 1 to 10.');
@@ -30,5 +31,11 @@ while True:
 
         else:
             print("Unfortunately, it's the number", str(a) + '!');
+            
     except:
         print('An error has occurred! Try again.');
+        work = input('Exit? (y/n) ');
+        if work == 'y':
+            b = False;
+        system('cls');
+        print();
