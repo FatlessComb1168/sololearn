@@ -27,8 +27,7 @@ while b:
         length = int(input('Enter length of password: '));
         result = '';
 
-        for i in range(length):
-            result += chr(randint(33, 122));
+        result = ''.join([chr(randint(33, 122)) for i in range(length)]);
         try:
             copy(result);
             print('Password (copied!): ' + result);
