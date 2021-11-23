@@ -14,13 +14,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 
 from os import system;
-array = [];
-
-for i in range(33, 127):
-    array.append(chr(i));
-    
-for i in range(1040, 1104):
-    array.append(chr(i));
+array = ([chr(i) for i in range(33, 127)]
+    + [chr(i) for i in range(1040, 1104)]);
     
 array.insert(132, 'ё');
 array.insert(100, 'Ё');
@@ -43,33 +38,28 @@ def encrypt(number):
                 caesar_encrypt += text[i];
             
         except:
-            caesar_encrypt += array[array.index(text[i]) + number - len(array)];
+            caesar_encrypt += array[array.index(text[i])
+                + number - len(array)];
     return caesar_encrypt;
 
-_exit = True;
-while _exit:
-    proof = 0;
+ask_for_exit = '';
+while ask_for_exit != 'y':
+    system('cls');
     number = input('Input any integer positive or negative number: ');
 
     try:
         number = int(number);
     except:
         ask_for_exit = input('Exit? (y/n): ');
-        if ask_for_exit == 'y':
-            _exit = False;
-        proof = 1;
+        continue;
 
-    if proof == 0:
-        text = input('Input any text using latin and cyrrilic alphabets, digits and special symbols: ');
+    text = input('Input any text using latin and cyrrilic ' +
+        'alphabets, digits and special symbols: ');
+    caesar = encrypt(number);
+    number *= -1;
+    caesar_reversed = encrypt(number);
 
-        caesar = encrypt(number);
-
-        number *= -1;
-        caesar_reversed = encrypt(number);
-
-        print('\nOriginal:', text);
-        print('Encrypted:', caesar);
-        print('Encrypted reversed:', caesar_reversed);
-        input();
-
-    system('cls');
+    print('\nOriginal:', text);
+    print('Encrypted:', caesar);
+    print('Encrypted reversed:', caesar_reversed);
+    input();
