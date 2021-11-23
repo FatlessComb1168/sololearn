@@ -15,8 +15,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from os import system;
 
-b = True;
-while b:
+a = '';
+while a != 'y':
     try:
         system('cls');
         x = int(input("Enter any natural number: "));
@@ -52,7 +52,3 @@ while b:
         input();
     except:
         a = input('Exit? (y/n): ');
-        if a == 'y':
-            b = False;
-        else:
-            continue;
