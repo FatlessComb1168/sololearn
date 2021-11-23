@@ -20,14 +20,12 @@ try:
 except:
     pass;
 
-b = True;
-while b:
+a = '';
+while a != 'y':
     try:
         system('cls');
-        length = int(input('Enter length of password: '));
-        result = '';
-
-        result = ''.join([chr(randint(33, 122)) for i in range(length)]);
+        result = ''.join([chr(randint(33, 122))
+            for i in range(int(input('Enter length of password: ')))]);
         try:
             copy(result);
             print('Password (copied!): ' + result);
@@ -37,7 +35,3 @@ while b:
         input();
     except:
         a = input('Exit? (y/n): ');
-        if a == 'y':
-            b = False;
-        else:
-            continue;
